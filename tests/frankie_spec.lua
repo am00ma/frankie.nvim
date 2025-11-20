@@ -1,0 +1,22 @@
+local Colors = require("frankie.colors")
+local Config = require("frankie.config")
+local Groups = require("frankie.groups")
+
+---@diagnostic disable: undefined-global
+describe("load modules", function()
+  it("setup config", function()
+    local cfg = Config.setup({ style = "greenish" })
+    assert(cfg.style, "Setup config")
+  end)
+  it("setup colors", function()
+    local colors = Colors.setup()
+    assert(colors.palette, "Has palette")
+    assert(colors.diags, "Has diags")
+  end)
+  it("setup groups", function()
+    local cfg = { style = "greenish" }
+    local colors = Colors.setup(cfg)
+    local _, groups = Groups.setup(colors.palette, cfg)
+    assert(groups["Normal"], "Normal exists on groups")
+  end)
+end)
