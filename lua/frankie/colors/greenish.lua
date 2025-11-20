@@ -4,7 +4,7 @@ local M = {}
 ---@class frankie.Palette
 M.palette = {
   bg = "#002200",
-  fg = "#ffffff",
+  fg = "#ddffdd",
   accent = "#22aa22",
 }
 
