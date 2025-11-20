@@ -13,14 +13,14 @@ function M.setup(opts)
   end
 
   vim.o.termguicolors = true
-  vim.g.colors_name = "frankie"
+  vim.g.colors_name = "frankie-" .. opts.style
 
   for group, hl in pairs(groups) do
     hl = type(hl) == "string" and { link = hl } or hl
     vim.api.nvim_set_hl(0, group, hl)
   end
 
-  return colors, groups, opts
+  return opts, colors, groups
 end
 
 return M
