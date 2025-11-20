@@ -5,7 +5,7 @@ function M.setup(opts)
   opts = require("frankie.config").extend(opts)
 
   local colors = require("frankie.colors").setup(opts)
-  local _, groups = require("frankie.groups").setup(colors.palette, opts)
+  local _, groups = require("frankie.groups").setup(colors, opts)
 
   -- only needed to clear when not the default colorscheme
   if vim.g.colors_name then

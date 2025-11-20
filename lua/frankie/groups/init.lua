@@ -1,8 +1,10 @@
 local Config = require("frankie.config")
 
+local Base = require("frankie.groups.base")
+
 local M = {}
 
----@param colors frankie.Palette
+---@param colors frankie.Colorscheme
 ---@param opts frankie.Config
 function M.setup(colors, opts)
   -- Load config
@@ -13,10 +15,11 @@ function M.setup(colors, opts)
     cfg = { style = "greenish" }
   end
 
-  -- Merge groups
-  local groups = {
-    ["Normal"] = { bg = colors.bg, fg = colors.fg },
-  }
+  -- Merge groups : TODO: should allow opts here to use `force` below
+  local groups = {}
+
+  -- Base (UI, Diagnostics, Native Syntax)
+  groups = vim.tbl_deep_extend("force", groups, Base.get(colors, opts))
 
   local ret = {}
 
