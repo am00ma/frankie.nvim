@@ -3,6 +3,7 @@ local M = {}
 
 ---@param c frankie.Palette
 M.spectrum = function(c)
+  -- brighten/darken foreground color
   return {
     bg = c.bg,
     bg_1f = Util.blend(c.fg, 0.1, c.bg),
@@ -16,12 +17,21 @@ M.spectrum = function(c)
     fg_9b = Util.blend(c.bg, 0.95, c.fg),
 
     accent = c.accent,
+    accent_1b = Util.blend(c.bg, 0.1, c.accent),
+    accent_2b = Util.blend(c.bg, 0.2, c.accent),
+    accent_3b = Util.blend(c.bg, 0.3, c.accent),
+    accent_9b = Util.blend(c.bg, 0.95, c.accent),
   }
 end
 
 ---@type frankie.HighlightsFn
 function M.get(colors, _)
   local c = colors.palette
+
+  -- Adjust palette
+  c.fg = Util.brighten(c.fg, 0.4, 0.4)
+  c.accent = Util.brighten(c.accent, 0.2, 0.2)
+
   local s = M.spectrum(c)
   -- local d = colors.diags
 
@@ -35,35 +45,35 @@ function M.get(colors, _)
     VisualNOS = { bg = s.bg_2f, fg = s.fg_1b }, -- not owning selection
 
     -- Float
-    NormalFloat = "Normal",
+    NormalFloat = { bg = s.bg, fg = s.fg },
     FloatBorder = { bg = s.bg, fg = s.fg_9b }, -- Hiding border
     FloatTitle = { bg = s.bg, fg = s.accent, bold = true },
-    FloatFooter = "Normal",
+    FloatFooter = "NormalFloat",
 
     -- Cursor
     Cursor = { bg = s.fg, fg = s.bg },
     lCursor = { bg = s.fg, fg = s.bg },
     CursorIM = { bg = s.fg, fg = s.bg },
     CursorColumn = { bg = s.fg, fg = s.bg },
-    CursorLine = { bg = s.bg_2f, fg = s.fg },
-    CursorLineNr = { bg = s.bg_2f, fg = s.fg },
-    CursorLineFold = { bg = s.bg_2f, fg = s.fg },
-    CursorLineSign = { bg = s.bg_2f, fg = s.fg },
+    CursorLine = { bg = s.bg_1f, fg = s.fg },
+    CursorLineNr = { bg = s.bg, fg = s.fg, bold = true },
+    CursorLineFold = { bg = s.bg_1f, fg = s.fg },
+    CursorLineSign = { bg = s.bg_1f, fg = s.fg },
     TermCursor = { bg = s.fg, fg = s.bg },
 
     -- Separators
-    VertSplit = "Normal", -- the column separating vertically split windows
-    WinSeparator = "Normal", -- the column separating vertically split windows
-    ColorColumn = "Normal", -- used for the columns set with 'colorcolumn'
+    VertSplit = { bg = s.bg, fg = s.accent_3b }, -- the column separating vertically split windows
+    WinSeparator = "VertSplit", -- the column separating vertically split windows
+    ColorColumn = "CursorLine", -- used for the columns set with 'colorcolumn'
 
     -- Gutter
-    LineNr = "Normal", -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    LineNrAbove = "Normal",
-    LineNrBelow = "Normal",
-    Folded = "Normal", -- line used for closed folds
-    FoldColumn = "Normal", -- 'foldcolumn'
-    SignColumn = "Normal", -- column where |signs| are displayed
-    SignColumnSB = "Normal", -- column where |signs| are displayed
+    LineNr = { bg = s.bg, fg = s.accent_3b }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNrAbove = { bg = s.bg, fg = s.accent_3b },
+    LineNrBelow = "LineNrAbove",
+    Folded = { bg = s.bg, fg = s.fg_3b, italic = true }, -- line used for closed folds
+    FoldColumn = "Folded", -- 'foldcolumn'
+    SignColumn = "Folded", -- column where |signs| are displayed
+    SignColumnSB = "Folded", -- column where |signs| are displayed
 
     -- Statuslines
     QuickFixLine = "Normal", -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
