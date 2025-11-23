@@ -1,38 +1,11 @@
 local Util = require("frankie.util")
 local M = {}
 
----@param c frankie.Palette
-M.spectrum = function(c)
-  -- brighten/darken foreground color
-  return {
-    bg = c.bg,
-    bg_1f = Util.blend(c.fg, 0.1, c.bg),
-    bg_2f = Util.blend(c.fg, 0.2, c.bg),
-    bg_3f = Util.blend(c.fg, 0.3, c.bg),
-
-    fg = c.fg,
-    fg_1b = Util.blend(c.bg, 0.1, c.fg),
-    fg_2b = Util.blend(c.bg, 0.2, c.fg),
-    fg_3b = Util.blend(c.bg, 0.3, c.fg),
-    fg_9b = Util.blend(c.bg, 0.95, c.fg),
-
-    accent = c.accent,
-    accent_1b = Util.blend(c.bg, 0.1, c.accent),
-    accent_2b = Util.blend(c.bg, 0.2, c.accent),
-    accent_3b = Util.blend(c.bg, 0.3, c.accent),
-    accent_9b = Util.blend(c.bg, 0.95, c.accent),
-  }
-end
-
 ---@type frankie.HighlightsFn
 function M.get(colors, _)
   local c = colors.palette
 
-  -- Adjust palette
-  c.fg = Util.brighten(c.fg, 0.4, 0.4)
-  c.accent = Util.brighten(c.accent, 0.2, 0.2)
-
-  local s = M.spectrum(c)
+  local s = Util.spectrum(c)
   -- local d = colors.diags
 
   return {

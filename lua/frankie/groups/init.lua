@@ -1,6 +1,8 @@
 local Config = require("frankie.config")
 
 local Base = require("frankie.groups.base")
+local SemanticTokens = require("frankie.groups.semantic_tokens")
+local Treesitter = require("frankie.groups.treesitter")
 
 local M = {}
 
@@ -20,6 +22,8 @@ function M.setup(colors, opts)
 
   -- Base (UI, Diagnostics, Native Syntax)
   groups = vim.tbl_deep_extend("force", groups, Base.get(colors, opts))
+  groups = vim.tbl_deep_extend("force", groups, Treesitter.get(colors, opts))
+  groups = vim.tbl_deep_extend("force", groups, SemanticTokens.get(colors, opts))
 
   local ret = {}
 

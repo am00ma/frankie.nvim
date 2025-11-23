@@ -77,4 +77,27 @@ function M.brighten(color, lightness_amount, saturation_amount)
   return hsluv.hsluv_to_hex(hsl)
 end
 
+---@param c frankie.Palette
+function M.spectrum(c)
+  -- brighten/darken foreground color
+  return {
+    bg = c.bg,
+    bg_1f = M.blend(c.fg, 0.1, c.bg),
+    bg_2f = M.blend(c.fg, 0.2, c.bg),
+    bg_3f = M.blend(c.fg, 0.3, c.bg),
+
+    fg = c.fg,
+    fg_1b = M.blend(c.bg, 0.1, c.fg),
+    fg_2b = M.blend(c.bg, 0.2, c.fg),
+    fg_3b = M.blend(c.bg, 0.3, c.fg),
+    fg_9b = M.blend(c.bg, 0.95, c.fg),
+
+    accent = c.accent,
+    accent_1b = M.blend(c.bg, 0.1, c.accent),
+    accent_2b = M.blend(c.bg, 0.2, c.accent),
+    accent_3b = M.blend(c.bg, 0.3, c.accent),
+    accent_9b = M.blend(c.bg, 0.95, c.accent),
+  }
+end
+
 return M
