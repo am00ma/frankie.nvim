@@ -6,7 +6,6 @@
 
 ---@class frankie.Colorscheme
 ---@field palette frankie.Palette
----@field diags frankie.Diags
 
 ---@alias frankie.Highlights table<string,frankie.Highlight|string>
 ---@alias frankie.HighlightsFn fun(colors: frankie.Colorscheme, opts:frankie.Config):frankie.Highlights

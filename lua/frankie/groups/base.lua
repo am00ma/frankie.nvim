@@ -87,8 +87,8 @@ function M.get(colors, _)
     SpellRare = "Normal", -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
 
     -- Messages
-    ErrorMsg = "Normal", -- error messages on the command line
-    WarningMsg = "Normal", -- warning messages
+    ErrorMsg = { fg = s.error }, -- error messages on the command line
+    WarningMsg = { fg = s.warn }, -- warning messages
 
     -- Syntax
     Bold = { bold = true }, -- (preferred) any bold text
@@ -123,7 +123,7 @@ function M.get(colors, _)
 
     Todo = "Normal", -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
     Debug = "Normal", --    debugging statements
-    Error = "Normal", -- (preferred) any erroneous construct
+    Error = { bg = s.bg_1f, fg = s.error }, -- (preferred) any erroneous construct
 
     -- misc
     debugBreakpoint = "Normal", -- used for breakpoint colors in terminal-debug
