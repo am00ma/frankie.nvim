@@ -20,8 +20,9 @@ M.palette = {
 M.diags = {}
 
 -- Adjust palette
-M.palette.fg = Util.brighten(M.palette.fg, -0.5, -0.4)
-M.palette.accent = Util.brighten(M.palette.accent, -0.4, 0.2)
+M.palette.bg = Util.brighten(M.palette.bg, -0.2, 0.0)
+M.palette.fg = Util.brighten(M.palette.fg, -0.5, 0.0)
+M.palette.accent = Util.brighten(M.palette.accent, -0.4, -0.4)
 M.palette.success = Util.blend("#00FF00", 0.5, M.palette.bg)
 M.palette.info = Util.blend("#0000FF", 0.5, M.palette.bg)
 M.palette.warn = Util.blend("#FFFF00", 0.5, M.palette.bg)
