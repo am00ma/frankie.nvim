@@ -77,8 +77,8 @@ function M.get(colors, _)
 
     -- Statuslines
     QuickFixLine = "Normal", -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-    StatusLine = "Normal", -- status line of current window
-    StatusLineNC = "Normal", -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+    StatusLine = { bg = s.bg_1f, fg = s.fg }, -- status line of current window
+    StatusLineNC = { bg = s.bg_1f, fg = s.fg_2b }, -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
     TabLine = "Normal", -- tab pages line, not active tab page label
     TabLineFill = "Normal", -- tab pages line, where there are no labels
     TabLineSel = "Normal", -- tab pages line, active tab page label
@@ -89,24 +89,23 @@ function M.get(colors, _)
     ModeMsg = "Normal", -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea = "Normal", -- Area for messages and cmdline
     MoreMsg = "Normal", -- |more-prompt|
-    NonText = "Normal", -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
 
     -- Search
     Substitute = "Normal", -- |:substitute| replacement text highlighting
     MatchParen = "Normal", -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     Question = "Normal", -- |hit-enter| prompt and yes/no questions
-    Search = "Normal", -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    IncSearch = "Normal", -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+    Search = { bg = s.bg_1f, fg = s.accent_1b }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    IncSearch = { bg = s.bg_2f, fg = s.accent }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
     CurSearch = "IncSearch",
-    WildMenu = "Normal", -- current match in 'wildmenu' completion
+    WildMenu = "Search", -- current match in 'wildmenu' completion
 
     -- Popup menu
-    Pmenu = "Normal", -- Popup menu: normal item.
-    PmenuMatch = "Normal", -- Popup menu: Matched text in normal item.
-    PmenuSel = "Normal", -- Popup menu: selected item.
-    PmenuMatchSel = "Normal", -- Popup menu: Matched text in selected item.
-    PmenuSbar = "Normal", -- Popup menu: scrollbar.
-    PmenuThumb = "Normal", -- Popup menu: Thumb of the scrollbar.
+    Pmenu = { bg = s.bg_1f, fg = s.fg_3b }, -- Popup menu: normal item.
+    PmenuMatch = { bg = s.bg_1f, fg = s.fg_1b, italic = true }, -- Popup menu: Matched text in normal item.
+    PmenuSel = { bg = s.bg_1f, fg = s.fg_2b, bold = true }, -- Popup menu: selected item.
+    PmenuMatchSel = { bg = s.bg_1f, fg = s.fg_1b, italic = true }, -- Popup menu: Matched text in selected item.
+    PmenuSbar = { bg = s.bg_2f }, -- Popup menu: scrollbar.
+    PmenuThumb = { bg = s.fg_3b }, -- Popup menu: Thumb of the scrollbar.
 
     -- Spelling diagnostics
     SpellBad = "Normal", -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
@@ -125,7 +124,9 @@ function M.get(colors, _)
     Whitespace = { bg = s.bg, fg = s.accent },
     SpecialKey = { bg = s.bg, fg = s.accent }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
     EndOfBuffer = { bg = s.bg, fg = s.accent }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-    Bold = { bold = true, fg = c.fg }, -- (preferred) any bold text
+    NonText = "Normal", -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    Bold = { bold = true }, -- (preferred) any bold text
+    Italic = { italic = true }, -- (preferred) any italic text
     Character = "Normal", --  a character constant: 'c', '\n'
     Constant = "Normal", -- (preferred) any constant
     Debug = "Normal", --    debugging statements
@@ -133,7 +134,6 @@ function M.get(colors, _)
     Error = "Normal", -- (preferred) any erroneous construct
     Function = "Normal", -- function name (also: methods for classes)
     Identifier = "Normal", -- (preferred) any variable name
-    Italic = "Normal", -- (preferred) any italic text
     Keyword = "Normal", --  any other keyword
     Operator = "Normal", -- "sizeof", "+", "*", etc.
     PreProc = "Normal", -- (preferred) generic Preprocessor
