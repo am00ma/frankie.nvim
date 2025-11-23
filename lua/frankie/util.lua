@@ -90,13 +90,23 @@ function M.spectrum(c)
     fg_1b = M.blend(c.bg, 0.1, c.fg),
     fg_2b = M.blend(c.bg, 0.2, c.fg),
     fg_3b = M.blend(c.bg, 0.3, c.fg),
+    fg_8b = M.blend(c.bg, 0.85, c.fg),
     fg_9b = M.blend(c.bg, 0.95, c.fg),
 
     accent = c.accent,
     accent_1b = M.blend(c.bg, 0.1, c.accent),
     accent_2b = M.blend(c.bg, 0.2, c.accent),
     accent_3b = M.blend(c.bg, 0.3, c.accent),
+    accent_5b = M.blend(c.bg, 0.5, c.accent),
+    accent_8b = M.blend(c.bg, 0.85, c.accent),
     accent_9b = M.blend(c.bg, 0.95, c.accent),
+
+    accent_1f = M.blend(c.fg, 0.1, c.accent),
+    accent_2f = M.blend(c.fg, 0.2, c.accent),
+    accent_3f = M.blend(c.fg, 0.3, c.accent),
+    accent_5f = M.blend(c.fg, 0.5, c.accent),
+    accent_8f = M.blend(c.fg, 0.85, c.accent),
+    accent_9f = M.blend(c.fg, 0.95, c.accent),
   }
 end
 

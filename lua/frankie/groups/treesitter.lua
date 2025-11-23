@@ -78,12 +78,12 @@ function M.get(colors, _)
     ["@none"]                       = {},
     ["@number"]                     = "Number",
     ["@number.float"]               = "Float",
-    ["@operator"]                   = { bg = s.bg, fg = s.fg }, -- For any operator: `+`, but also `->` and `*` in C.
-    ["@property"]                   = { bg = s.bg, fg = s.fg },
-    ["@punctuation.bracket"]        = { bg = s.bg, fg = s.fg }, -- For brackets and parens.
-    ["@punctuation.delimiter"]      = { bg = s.bg, fg = s.fg }, -- For delimiters ie: `.`
-    ["@punctuation.special"]        = { bg = s.bg, fg = s.fg }, -- For special symbols (e.g. `{}` in string interpolation)
-    ["@punctuation.special.markdown"] = { bg = s.bg, fg = s.fg }, -- For special symbols (e.g. `{}` in string interpolation)
+    ["@operator"]                   = "Operator", -- For any operator: `+`, but also `->` and `*` in C.
+    ["@property"]                   = { fg = s.fg },
+    ["@punctuation.bracket"]        = "@none", -- For brackets and parens.
+    ["@punctuation.delimiter"]      = "Operator", -- For delimiters ie: `.`
+    ["@punctuation.special"]        = "Operator", -- For special symbols (e.g. `{}` in string interpolation)
+    ["@punctuation.special.markdown"] = "Operator", -- For special symbols (e.g. `{}` in string interpolation)
     ["@string"]                     = "String",
     ["@string.documentation"]       = { bg = s.bg, fg = s.fg },
     ["@string.escape"]              = { bg = s.bg, fg = s.fg }, -- For escape characters within a string.
@@ -95,14 +95,14 @@ function M.get(colors, _)
     ["@tag.tsx"]                    = { bg = s.bg, fg = s.fg },
     ["@tag.javascript"]             = { bg = s.bg, fg = s.fg },
     ["@type"]                       = "Type",
-    ["@type.builtin"]               = { bg = s.bg, fg = s.fg },
+    ["@type.builtin"]               = { fg = s.fg },
     ["@type.definition"]            = "Typedef",
     ["@type.qualifier"]             = "@keyword",
-    ["@variable"]                   = { bg = s.bg, fg = s.fg }, -- Any variable name that does not have another highlight.
-    ["@variable.builtin"]           = { bg = s.bg, fg = s.fg }, -- Variable names that are defined by the languages, like `this` or `self`.
-    ["@variable.member"]            = { bg = s.bg, fg = s.fg }, -- For fields.
-    ["@variable.parameter"]         = { bg = s.bg, fg = s.fg }, -- For parameters of a function.
-    ["@variable.parameter.builtin"] = { bg = s.bg, fg = s.fg }, -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
+    ["@variable"]                   = { fg = s.accent_3f }, -- Any variable name that does not have another highlight.
+    ["@variable.builtin"]           = "@variable", -- Variable names that are defined by the languages, like `this` or `self`.
+    ["@variable.member"]            = "@variable", -- For fields.
+    ["@variable.parameter"]         = "@variable", -- For parameters of a function.
+    ["@variable.parameter.builtin"] = "@variable", -- For builtin parameters of a function, e.g. "..." or Smali's p[1-99]
   }
 
   -- for i, color in ipairs(c.rainbow) do

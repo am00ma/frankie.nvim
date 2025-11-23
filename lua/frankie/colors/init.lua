@@ -9,6 +9,7 @@ function M.setup(opts)
       colors = require("frankie.colors." .. opts.style)
     end
   end
+
   return colors
 end
 

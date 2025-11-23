@@ -65,7 +65,7 @@ function M.get(colors, _)
 
     -- Search
     Substitute = "Normal", -- |:substitute| replacement text highlighting
-    MatchParen = "Normal", -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen = { bg = s.accent_5b, fg = s.accent }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     Question = "Normal", -- |hit-enter| prompt and yes/no questions
     Search = { bg = s.bg_1f, fg = s.accent_1b }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
     IncSearch = { bg = s.bg_2f, fg = s.accent }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
@@ -99,25 +99,25 @@ function M.get(colors, _)
     Comment = { bg = s.bg, fg = s.fg_3b, italic = true }, -- any comment
     Directory = { bg = s.bg, fg = s.fg, italic = true }, -- directory names (and other special names in listings)
 
-    Whitespace = { bg = s.bg, fg = s.accent },
+    Whitespace = "Normal",
     EndOfBuffer = "Whitespace", -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
     NonText = "Whitespace", -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
     SpecialKey = "Whitespace", -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
 
-    Special = { bg = s.bg, fg = s.accent }, -- (preferred) any special symbol
+    Special = { bg = s.bg, fg = s.accent_5f }, -- (preferred) any special symbol
     Delimiter = "Special", --  character that needs attention
 
     Character = "Normal", --  a character constant: 'c', '\n'
-    Operator = { bg = s.bg, fg = s.fg_3b }, -- "sizeof", "+", "*", etc.
+    Operator = { fg = s.fg_5b }, -- "sizeof", "+", "*", etc.
 
-    Identifier = { bg = s.bg, fg = s.fg }, -- (preferred) any variable name
+    Identifier = { fg = s.fg }, -- (preferred) any variable name
     Constant = "Identifier", -- (preferred) any constant
     String = "Identifier", --   a string constant: "this is a string"
 
     Type = { bg = s.bg, fg = s.fg_2b }, -- (preferred) int, long, char, etc.
     Keyword = "Type", --  any other keyword
 
-    Function = { bg = s.bg_1f, fg = s.accent_1b }, -- function name (also: methods for classes)
+    Function = { bg = s.bg_1f, fg = s.accent_8f }, -- function name (also: methods for classes)
     PreProc = { bg = s.bg_1f, fg = s.fg_1b, italic = true }, -- (preferred) generic Preprocessor
     Statement = "Normal", -- (preferred) any statement
 
