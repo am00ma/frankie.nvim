@@ -28,7 +28,7 @@ function M.get(colors, _)
     lCursor = { bg = s.fg, fg = s.bg },
     CursorIM = { bg = s.fg, fg = s.bg },
     CursorColumn = { bg = s.fg, fg = s.bg },
-    CursorLine = { bg = s.bg_1f, fg = s.fg },
+    CursorLine = { bg = s.bg_1f },
     CursorLineNr = { bg = s.bg, fg = s.fg, bold = true },
     CursorLineFold = { bg = s.bg_1f, fg = s.fg },
     CursorLineSign = { bg = s.bg_1f, fg = s.fg },
@@ -117,8 +117,8 @@ function M.get(colors, _)
     Type = { bg = s.bg, fg = s.fg_2b }, -- (preferred) int, long, char, etc.
     Keyword = "Type", --  any other keyword
 
-    Function = { bg = s.bg_1f, fg = s.fg_2b }, -- function name (also: methods for classes)
-    PreProc = { bg = s.bg_1f, fg = s.fg_2b, italic = true }, -- (preferred) generic Preprocessor
+    Function = { bg = s.bg_1f, fg = s.accent_1b }, -- function name (also: methods for classes)
+    PreProc = { bg = s.bg_1f, fg = s.fg_1b, italic = true }, -- (preferred) generic Preprocessor
     Statement = "Normal", -- (preferred) any statement
 
     Todo = "Normal", -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX

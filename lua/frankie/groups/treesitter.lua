@@ -33,7 +33,7 @@ function M.get(colors, _)
     ["@diff.minus"]                 = "DiffDelete",
     ["@diff.plus"]                  = "DiffAdd",
     ["@function"]                   = "Function",
-    ["@function.builtin"]           = "Special",
+    ["@function.builtin"]           = "Function",
     ["@function.call"]              = "@function",
     ["@function.macro"]             = "Macro",
     ["@function.method"]            = "Function",
