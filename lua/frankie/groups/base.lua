@@ -118,31 +118,39 @@ function M.get(colors, _)
     WarningMsg = "Normal", -- warning messages
 
     -- Syntax
+    Bold = { bold = true }, -- (preferred) any bold text
+    Italic = { italic = true }, -- (preferred) any italic text
+    Underlined = { underline = true }, -- (preferred) text that stands out, HTML links
+
     Title = { bg = s.bg, fg = s.accent, bold = true },
     Comment = { bg = s.bg, fg = s.fg_3b, italic = true }, -- any comment
     Directory = { bg = s.bg, fg = s.fg, italic = true }, -- directory names (and other special names in listings)
+
     Whitespace = { bg = s.bg, fg = s.accent },
-    SpecialKey = { bg = s.bg, fg = s.accent }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    EndOfBuffer = { bg = s.bg, fg = s.accent }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-    NonText = "Normal", -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-    Bold = { bold = true }, -- (preferred) any bold text
-    Italic = { italic = true }, -- (preferred) any italic text
-    Character = "Normal", --  a character constant: 'c', '\n'
-    Constant = "Normal", -- (preferred) any constant
-    Debug = "Normal", --    debugging statements
+    EndOfBuffer = "Whitespace", -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    NonText = "Whitespace", -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+    SpecialKey = "Whitespace", -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+
+    Special = { bg = s.bg, fg = s.accent }, -- (preferred) any special symbol
     Delimiter = "Special", --  character that needs attention
-    Error = "Normal", -- (preferred) any erroneous construct
-    Function = "Normal", -- function name (also: methods for classes)
-    Identifier = "Normal", -- (preferred) any variable name
-    Keyword = "Normal", --  any other keyword
-    Operator = "Normal", -- "sizeof", "+", "*", etc.
-    PreProc = "Normal", -- (preferred) generic Preprocessor
-    Special = "Normal", -- (preferred) any special symbol
+
+    Character = "Normal", --  a character constant: 'c', '\n'
+    Operator = { bg = s.bg, fg = s.fg_3b }, -- "sizeof", "+", "*", etc.
+
+    Identifier = { bg = s.bg, fg = s.fg }, -- (preferred) any variable name
+    Constant = "Identifier", -- (preferred) any constant
+    String = "Identifier", --   a string constant: "this is a string"
+
+    Type = { bg = s.bg, fg = s.fg_2b }, -- (preferred) int, long, char, etc.
+    Keyword = "Type", --  any other keyword
+
+    Function = { bg = s.bg_1f, fg = s.fg_2b }, -- function name (also: methods for classes)
+    PreProc = { bg = s.bg_1f, fg = s.fg_2b, italic = true }, -- (preferred) generic Preprocessor
     Statement = "Normal", -- (preferred) any statement
-    String = "Normal", --   a string constant: "this is a string"
+
     Todo = "Normal", -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-    Type = "Normal", -- (preferred) int, long, char, etc.
-    Underlined = "Normal", -- (preferred) text that stands out, HTML links
+    Debug = "Normal", --    debugging statements
+    Error = "Normal", -- (preferred) any erroneous construct
 
     -- misc
     debugBreakpoint = "Normal", -- used for breakpoint colors in terminal-debug
